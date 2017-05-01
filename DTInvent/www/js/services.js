@@ -3,7 +3,11 @@ angular.module('starter.services', [])
 .factory('Products', function() {
   return {
     all: function() {
-      return JSON.parse(localStorage.getItem('products'));
+      if(localStorage.getItem('products') !== undefined && localStorage.getItem('products') !== undefined) {
+        return JSON.parse(localStorage.getItem('products'));
+      } else {
+        return [];
+      }
     },
     remove: function(item) {
       var products = JSON.parse(localStorage.getItem('products'));
