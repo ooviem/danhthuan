@@ -10,7 +10,7 @@ angular.module('starter.services', [])
       }
     },
     remove: function(item) {
-      var products = Products.all();
+      var products = this.all();
       var index = products.findIndex(x => x._id === item._id);
       if(index != -1)
       products.splice( index, 1 );
@@ -18,17 +18,17 @@ angular.module('starter.services', [])
       return products;
     },
     get: function(id) {
-      var products = Products.all();
+      var products = this.all();
       return products.find(x => x._id == id);
     },
     save: function(item) {
-      var products = Products.all();
+      var products = this.all();
       var index = products.findIndex(x => x._id === item._id);
       products[index] = item;
       localStorage.setItem('products', JSON.stringify(products));
     },
     add: function(item) {
-      var products = Products.all();
+      var products = this.all();
       var productId = products[products.length - 1] !== undefined ? products[products.length - 1]._id : undefined;
       item._id = productId === undefined ? 1 : productId + 1;
       item.createdDate = new Date().toLocaleDateString("vi-VN");
