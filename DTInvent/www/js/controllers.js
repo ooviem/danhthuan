@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('SearchCtrl', function($scope, $state, $stateParams, Products) {
+.controller('SearchCtrl', function($scope, $state, $stateParams, Products, $ionicPopup) {
   $scope.form = {
     searchText: ""
   };
@@ -17,14 +17,22 @@ angular.module('starter.controllers', [])
     }
   });
   $scope.delete = function(item){
-    $scope.products = Products.remove(item);
+    var confirmPopup = $ionicPopup.confirm({
+       title: 'Xác nhận xóa',
+       template: 'Bạn có muốn xóa '+ item.name +' ?'
+     });
+     confirmPopup.then(function(res) {
+       if(res) {
+          $scope.products = Products.remove(item);
+       }
+     });
   };
   $scope.edit = function(item){
     $state.go('tab.detail', {"id": item._id});
   };
 })
 
-.controller('ProductCtrl', function($scope, $state, $stateParams, Products) {
+.controller('ProductCtrl', function($scope, $state, $stateParams, Products, $ionicPopup) {
    $scope.$on('$ionicView.enter', function(e) {
     $scope.title = "Thêm mới sản phẩm";
     $scope.product = {
@@ -40,19 +48,33 @@ angular.module('starter.controllers', [])
     $state.go('tab.search');
   };
   $scope.save =function() {
-   	Products.add($scope.product);
-    $scope.product = {
-      id: "",
-      name: "",
-      price: "",
-      unit: "",
-      note: "",
-      createdDate: ""
-    };
+    if($scope.product.name !== undefined && $scope.product.id !== undefined && $scope.product.name !== null  && $scope.product.id !== null && $scope.product.id !== "" && $scope.product.name !== "") {
+      Products.add($scope.product);
+      $scope.product = {
+        id: "",
+        name: "",
+        price: "",
+        unit: "",
+        note: "",
+        createdDate: ""
+      };
+    } else {
+       $scope.showAlert();
+    }
+  };
+  $scope.showAlert = function() {
+     var alertPopup = $ionicPopup.alert({
+       title: 'Lỗi',
+       template: 'Mã và Tên không được để trống'
+     });
+
+     alertPopup.then(function(res) {
+       console.log('Thank you for not eating my delicious ice cream cone');
+     });
   };
 })
 
-.controller('ProductDetailCtrl', function($scope, $state, $stateParams, Products) {
+.controller('ProductDetailCtrl', function($scope, $state, $stateParams, Products, $ionicPopup) {
   $scope.$on('$ionicView.enter', function(e) {
     $scope.title = "Chỉnh sửa sản phẩm";
     $scope.product = Products.get($stateParams.id);
@@ -61,7 +83,22 @@ angular.module('starter.controllers', [])
     $state.go('tab.search');
   };
   $scope.save =function() {
-  	Products.save($scope.product);
-    $state.go('tab.search');
+    if($scope.product.name !== undefined && $scope.product.id !== undefined && $scope.product.name !== null  && $scope.product.id !== null && $scope.product.id !== "" && $scope.product.name !== "") {
+    	Products.save($scope.product);
+      $state.go('tab.search');
+    } else {
+      $scope.showAlert();
+    }
+  };
+
+  $scope.showAlert = function() {
+     var alertPopup = $ionicPopup.alert({
+       title: 'Lỗi',
+       template: 'Mã và Tên không được để trống'
+     });
+
+     alertPopup.then(function(res) {
+       console.log('Thank you for not eating my delicious ice cream cone');
+     });
   };
 });

@@ -31,7 +31,10 @@ angular.module('starter.services', [])
       var products = this.all();
       var productId = products[products.length - 1] !== undefined ? products[products.length - 1]._id : undefined;
       item._id = productId === undefined ? 1 : productId + 1;
-      item.createdDate = new Date().toLocaleDateString("vi-VN");
+      var options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+      var date = new Date();
+      item.createdDate = date.getDate()+"/"+ (date.getMonth()+1) +"/"+date.getFullYear();
+      new Date().toLocaleDateString("vi-VN", options);
       products.push(item);
       localStorage.setItem('products', JSON.stringify(products));
     }
