@@ -11,7 +11,7 @@ angular.module('starter.services', [])
     },
     remove: function(item) {
       var products = this.all();
-      var index = products.findIndex(x => x._id === item._id);
+      var index = products.findIndex(function(x){ return x._id === item._id});
       if(index != -1)
       products.splice( index, 1 );
       localStorage.setItem('products', JSON.stringify(products));
@@ -19,11 +19,11 @@ angular.module('starter.services', [])
     },
     get: function(id) {
       var products = this.all();
-      return products.find(x => x._id == id);
+      return products.find(function(x){return x._id == id});
     },
     save: function(item) {
       var products = this.all();
-      var index = products.findIndex(x => x._id === item._id);
+      var index = products.findIndex(function(x){ return x._id === item._id});
       products[index] = item;
       localStorage.setItem('products', JSON.stringify(products));
     },
