@@ -2,12 +2,12 @@
   <ion-content class="padding">
    <div class="list list-inset">
     <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" ng-change="search(event)" ng-model="form.searchText" placeholder="Tìm sản phẩm">
+      <i class="icon ion-search placeholder-icon" style="font-size: 21px;"></i>
+      <input type="text" style="font-size: 17px; padding-top: 0px;" ng-change="search(event)" ng-model="form.searchText" placeholder="Tìm sản phẩm">
     </label>
    </div>
   <div class="list">
-    <div class="item item-button-right" style="background-color: #d9dee0;">
+    <div class="item item-button-right" style="background-color: #d9dee0; font-size: 14px; font-weight: bold">
       <div style="margin-left: 5px; min-width: 160px; min-height: 20px; word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">Mã</div>
       <div style="margin-left: 5px; min-width: 240px; min-height: 20px;word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">Tên</div>
       <div style="margin-left: 5px; min-width: 160px; min-height: 20px;word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">Giá</div>
@@ -15,7 +15,7 @@
       <div style="margin-left: 5px; min-width: 160px; min-height: 20px;word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">Đơn vị</div>
       <div style="margin-left: 5px; min-width: 120px; min-height: 20px;word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">Ngày tạo</div>
     </div>
-    <div class="item item-button-right" style="padding-right: 10px" ng-repeat="product in products track by product._id">
+    <div class="item item-button-right" style="padding-right: 10px; font-size: 12px;" ng-repeat="product in products track by product._id">
       <div style="margin-left: 5px; min-width: 160px; min-height: 20px;word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">{{product.id}} </div>
       <div style="margin-left: 5px; min-width: 240px; min-height: 20px;word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">{{product.name}} </div>
       <div style="margin-left: 5px; min-width: 160px; min-height: 20px;word-wrap: break-word; float: left; overflow: hidden; text-overflow: ellipsis;">{{product.price}} </div>
