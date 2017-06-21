@@ -1,0 +1,40 @@
+<ion-view view-title={{title}}>
+  <ion-content>
+
+
+   <div class="list">
+    <div style="width: 100%; margin-top: 100px; margin-left: 150px;">
+      <button class="button button-balanced" ng-click="getData()" style="margin-right: 20px; width: 100px !important;">
+        Sao lưu
+      </button>
+      <button class="button button-balanced" ng-click="save()" style="width: 100px !important;" ng-show="data.showButton">
+        Khôi phục
+      </button>
+      <button class="button button-balanced" ng-click="export()" style="width: 100px !important;" ng-show="data.showButton">
+        Xuất file
+      </button>
+    <div>
+   <textarea type="text" style= "height: 300px; width: 800px; border: 1px solid blue; margin-top: 30px;" ng-model="data.backupData"></textarea> 
+<!--     <label class="item item-input item-stacked-label" style="height: 85px">
+      <span class="input-label" style="font-weight: bold;">Mã</span>
+      <input type="text" style="font-size: 20px; margin-top: 5px;" ng-model="product.id" placeholder="Ví dụ: xetang001">
+    </label>
+    <label class="item item-input item-stacked-label" style="height: 85px">
+      <span class="input-label"  style="font-weight: bold;">Tên</span>
+      <input type="text" style="font-size: 20px; margin-top: 5px;" ng-model="product.name" placeholder="Ví dụ: Xe tăng 001">
+    </label>
+    <label class="item item-input item-stacked-label" style="height: 85px">
+      <span class="input-label"  style="font-weight: bold;">Giá</span>
+      <input type="text" style="font-size: 20px; margin-top: 5px;" ng-model="product.price"  placeholder="Ví dụ: 10000 VNĐ">
+    </label>
+    <label class="item item-input item-stacked-label" style="height: 85px">
+      <span class="input-label"  style="font-weight: bold;">Chú thích</span>
+      <input type="text" style="font-size: 20px; margin-top: 5px;" ng-model="product.note"  placeholder="Ví dụ: 12/1255/1455">
+    </label>
+    <label class="item item-input item-stacked-label" style="height: 85px">
+      <span class="input-label"  style="font-weight: bold;">Đơn vị</span>
+      <input type="text" style="font-size: 20px; margin-top: 5px;" ng-model="product.unit"  placeholder="Ví dụ: Vĩ 50 cái">
+    </label> -->
+  </div>
+  </ion-content>
+</ion-view>
