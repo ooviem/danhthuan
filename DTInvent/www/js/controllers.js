@@ -1,6 +1,6 @@
-angular.module('starter.controllers', ['ngCordova.plugins.file'])
+angular.module('starter.controllers', [])
 
-.controller('SearchCtrl', function($scope, $state, $stateParams, Products, $ionicPopup, $cordovaFile) {
+.controller('SearchCtrl', function($scope, $state, $stateParams, Products, $ionicPopup) {
   $scope.form = {
     searchText: ""
   };
@@ -72,34 +72,8 @@ angular.module('starter.controllers', ['ngCordova.plugins.file'])
      });
   };
 })
-.controller('SettingCtrl', function($scope, $state, $stateParams, Products, $ionicPopup, $cordovaFile) {
-  $scope.$on('$ionicView.enter', function(e) {
-    $scope.title = "Cấu hình";
-  });
-  $scope.data = {
-    "backupData": "",
-    "showButton": false
-  };
-  $scope.getData = function() {
-    if($scope.data.backupData === "1234abcd") {
-      $scope.data.backupData = localStorage.getItem('products');
-      $scope.data.showButton = true;
-    }
-  };
-  $scope.save =function() {
-    var products = JSON.parse($scope.data.backupData);
-    localStorage.setItem('products', JSON.stringify(products));
-    $scope.data.backupData = "";
-  };
-  $scope.export =  function() {
-    $cordovaFile.writeFile(cordova.file.dataDirectory, "file.txt", "text", true)
-      .then(function (success) {
-        // success
-      }, function (error) {
-        // error
-    });
-    $scope.data.backupData = "";
-  };
+.controller('SettingCtrl', function($scope, $state, $stateParams, Products, $ionicPopup) {
+
 })
 
 .controller('ProductDetailCtrl', function($scope, $state, $stateParams, Products, $ionicPopup) {
