@@ -20,8 +20,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-     var db = $rootScope.db = $cordovaSQLite.openDB({ name: "my.db", location: "default" });
-
+    if (window.cordova) {
+       $rootScope.db = $cordovaSQLite.openDB({ name: "DTinvent.db" }); //device
+       console.log("Android");
+     }
+     else{
+       $rootScope.db = window.openDatabase("DTinvent.db", '1', 'my', 1024 * 1024 * 100); // browser
+       console.log("browser");
+    }
   });
 })
 

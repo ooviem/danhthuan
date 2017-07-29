@@ -1,13 +1,14 @@
 angular.module('starter.services', [])
 
-.factory('Products', function() {
+.factory('Products', function($rootScope) {
   return {
     all: function() {
-      if(localStorage.getItem('products') !== undefined && localStorage.getItem('products') !== null) {
-        return JSON.parse(localStorage.getItem('products'));
-      } else {
-        return [];
-      }
+      // if(localStorage.getItem('products') !== undefined && localStorage.getItem('products') !== null) {
+      //   return JSON.parse(localStorage.getItem('products'));
+      // } else {
+      //   return [];
+      // }
+      console.log($rootScope.db);
     },
     remove: function(item) {
       var products = this.all();
