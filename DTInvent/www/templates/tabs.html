@@ -3,7 +3,7 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+<ion-tabs class="tabs-icon-top tabs-color-active-positive" style="">
 
   <ion-tab title="Trang Chủ" icon-off="ion-ios-search" icon-on="ion-ios-search" href="#/tab/search">
     <ion-nav-view name="tab-search"></ion-nav-view>
@@ -16,4 +16,8 @@ navigation history that also transitions its views in and out.
   <ion-tab title="Cập nhật" icon-off="ion-edit" icon-on="ion-edit" href="#/tab/detail">
     <ion-nav-view name="tab-detail"></ion-nav-view>
   </ion-tab>
+<!-- 
+  <ion-tab title="Cài đặt" icon-off="ion-gear-a" icon-on="ion-gear-a" href="#/tab/setting">
+    <ion-nav-view name="tab-setting"></ion-nav-view>
+  </ion-tab> -->
 </ion-tabs>

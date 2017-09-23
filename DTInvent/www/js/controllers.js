@@ -74,12 +74,10 @@ angular.module('starter.controllers', [])
         template: 'Mã và Tên không được để trống'
       });
 
-      alertPopup.then(function(res) {
-        console.log('Thank you for not eating my delicious ice cream cone');
-      });
-    };
-  })
-
+     alertPopup.then(function(res) {
+     });
+  };
+})
   .controller('ProductDetailCtrl', function($scope, $state, $stateParams, Products, $ionicPopup) {
     $scope.$on('$ionicView.enter', function(e) {
       $scope.title = "Chỉnh sửa sản phẩm";
