@@ -1,25 +1,41 @@
 angular.module('starter.controllers', [])
 
-  .controller('SearchCtrl', function($scope, $state, $stateParams, Products, $ionicPopup, $cordovaSQLite, $rootScope) {
+  .controller('SearchCtrl', function($scope, $state, $stateParams, Products, $ionicPopup, $cordovaSQLite, $rootScope, $cordovaFile) {
     $scope.form = {
       searchText: ""
     };
-    $scope.search = function(text) {
-      $scope.products = products.filter(function(item) {
-        return item.name.toLowerCase().search($scope.form.searchText.toLowerCase()) > -1 || item.id.toLowerCase().search($scope.form.searchText.toLowerCase()) > -1 || item.note.toLowerCase().search($scope.form.searchText.toLowerCase()) > -1;
+    $scope.backup = function() {
+      const data = JSON.stringify($scope.products);
+      $cordovaFile.writeFile(cordova.file.externalDataDirectory, 'dbbackup.txt', data, {'append':false} ).then( function(result) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Thành công',
+          template: 'Sao lưu thành công'
+        });
+      }, function(err) {
+        console.log(err);
       });
+    };
+    $scope.search = function(text) {
+      const searchText = $scope.form.searchText.toLowerCase();
+      if (!searchText || searchText === '') {
+        $scope.products = [];
+        return;
+      }
+      $scope.products = $rootScope.products.filter(function(item) {
+        return item.name.toLowerCase().search(searchText) > -1 || item.id.toLowerCase().search(searchText) > -1 || item.note.toLowerCase().search(searchText) > -1;
+      }).slice(0, 30);
     };
     $scope.$on('$ionicView.enter', function(e) {
       if (!$rootScope.products) {
         Products.init().then(() => {
           Products.all().then((products) => {
-            $scope.products = products;
+            $scope.products = [];
           }, () => {
             $scope.products = [];
           });
         });
       } else {
-        $scope.products = $rootScope.products;
+        // $scope.products = $rootScope.products;
       }
     });
     $scope.delete = function(item) {

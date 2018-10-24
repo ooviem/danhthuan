@@ -1,11 +1,13 @@
 {
   "name": "DTInvent",
-  "app_id": "",
-  "type": "ionic1",
-  "watchPatterns": [
-    "scss/**/*"
-  ],
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
 }
