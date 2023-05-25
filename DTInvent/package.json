@@ -4,7 +4,7 @@
     "description": "DTInvent: An Ionic project",
     "dependencies": {
         "cordova-android": "^6.2.3",
-        "cordova-plugin-compat": "^1.0.0",
+        "cordova-plugin-compat": "^1.2.0",
         "cordova-plugin-file": "^4.3.3",
         "cordova-sqlite-storage": "^2.0.4",
         "gulp": "^3.5.6",
